@@ -5,15 +5,23 @@ import Joke from './Joke';
 const API_URL = 'https://icanhazdadjoke.com/';
 
 class JokeList extends Component {
+  static defaultProps = {
+    numJokesToGet: 10,
+  };
   constructor(props) {
     super(props);
+    this.state = { jokes: [] };
     this.getNewJoke = this.getNewJoke.bind(this);
   }
   async getNewJoke() {
-    let response = await axios.get(API_URL, {
-      headers: { Accept: 'application/json' },
-    });
-    console.log(response.data.joke);
+    let jokes = [];
+    for (let i = 0; i < this.props.numJokesToGet; i++) {
+      let response = await axios.get(API_URL, {
+        headers: { Accept: 'application/json' },
+      });
+      jokes.push(response.data.joke);
+    }
+    this.setState({ jokes: jokes });
   }
   render() {
     return (
