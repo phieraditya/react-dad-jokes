@@ -15,7 +15,7 @@ class JokeList extends Component {
   }
   async getNewJoke() {
     let jokes = [];
-    for (let i = 0; i < this.props.numJokesToGet; i++) {
+    while (jokes.length < this.props.numJokesToGet) {
       let response = await axios.get(API_URL, {
         headers: { Accept: 'application/json' },
       });
