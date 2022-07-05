@@ -26,17 +26,19 @@ class JokeList extends Component {
   render() {
     return (
       <div className="JokeList">
-        <section className="JokeList-left">
+        <div className="JokeList-left">
           <h1>
             <span>Dad </span>
             <span>Jokes</span>
           </h1>
           <h2>BIG SMILEY</h2>
           <button onClick={this.getNewJoke}>New Jokes</button>
-        </section>
-        <section className="JokeList-right">
-          <Joke />
-        </section>
+        </div>
+        <div className="JokeList-jokes">
+          {this.state.jokes.map((joke) => (
+            <li>{joke}</li>
+          ))}
+        </div>
       </div>
     );
   }
