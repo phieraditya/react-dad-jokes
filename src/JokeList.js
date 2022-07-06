@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Joke from './Joke';
+// import Joke from './Joke';
+import './JokeList.css';
 
 const API_URL = 'https://icanhazdadjoke.com/';
 
@@ -26,13 +27,18 @@ class JokeList extends Component {
   render() {
     return (
       <div className="JokeList">
-        <div className="JokeList-left">
-          <h1>
+        <div className="JokeList-sidebar">
+          <h1 className="JokeList-title">
             <span>Dad </span>
-            <span>Jokes</span>
+            Jokes
           </h1>
-          <h2>BIG SMILEY</h2>
-          <button onClick={this.getNewJoke}>New Jokes</button>
+          <img
+            alt="laugh icon"
+            src="https://assets.dryicons.com/uploads/icon/svg/8927/0eb14c71-38f2-433a-bfc8-23d9c99b3647.svg"
+          />
+          <button className="JokeList-getmore" onClick={this.getNewJoke}>
+            New Jokes
+          </button>
         </div>
         <div className="JokeList-jokes">
           {this.state.jokes.map((joke) => (
