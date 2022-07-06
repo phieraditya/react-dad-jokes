@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import Joke from './Joke';
+import Joke from './Joke';
 import './JokeList.css';
 
 const API_URL = 'https://icanhazdadjoke.com/';
@@ -20,7 +20,7 @@ class JokeList extends Component {
       let response = await axios.get(API_URL, {
         headers: { Accept: 'application/json' },
       });
-      jokes.push(response.data.joke);
+      jokes.push({ joke: response.data.joke, votes: 0 });
     }
     this.setState({ jokes: jokes });
   }
@@ -41,8 +41,8 @@ class JokeList extends Component {
           </button>
         </div>
         <div className="JokeList-jokes">
-          {this.state.jokes.map((joke) => (
-            <li>{joke}</li>
+          {this.state.jokes.map((j, idx) => (
+            <Joke key={idx} joke={j.joke} votes={j.votes} />
           ))}
         </div>
       </div>
