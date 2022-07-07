@@ -16,6 +16,9 @@ class JokeList extends Component {
     this.getNewJoke = this.getNewJoke.bind(this);
     this.handleVote = this.handleVote.bind(this);
   }
+  componentDidMount() {
+    this.getNewJoke();
+  }
   async getNewJoke() {
     let jokes = [];
     while (jokes.length < this.props.numJokesToGet) {
@@ -25,6 +28,7 @@ class JokeList extends Component {
       jokes.push({ id: uuidv4(), joke: response.data.joke, votes: 0 });
     }
     this.setState({ jokes: jokes });
+    window.localStorage.setItem('jokes', JSON.stringify(jokes));
   }
   handleVote(id, delta) {
     this.setState((st) => ({
