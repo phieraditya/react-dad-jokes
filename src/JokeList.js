@@ -12,12 +12,14 @@ class JokeList extends Component {
   };
   constructor(props) {
     super(props);
-    this.state = { jokes: [] };
+    this.state = {
+      jokes: JSON.parse(window.localStorage.getItem('jokes') || '[]'),
+    };
     this.getNewJoke = this.getNewJoke.bind(this);
     this.handleVote = this.handleVote.bind(this);
   }
   componentDidMount() {
-    this.getNewJoke();
+    if (this.state.jokes.length === 0) this.getNewJoke();
   }
   async getNewJoke() {
     let jokes = [];
