@@ -9,11 +9,13 @@ class Joke extends Component {
       <div className="Joke">
         <div className="Joke-buttons">
           <FontAwesomeIcon
+            className="Joke-arrow"
             icon={faArrowUp}
             onClick={this.props.upvote}
           ></FontAwesomeIcon>
-          <span>{this.props.votes}</span>
+          <span className="Joke-votes">{this.props.votes}</span>
           <FontAwesomeIcon
+            className="Joke-arrow"
             icon={faArrowDown}
             onClick={this.props.downvote}
           ></FontAwesomeIcon>
