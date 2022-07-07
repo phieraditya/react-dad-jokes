@@ -21,7 +21,9 @@ class Joke extends Component {
           ></FontAwesomeIcon>
         </div>
         <div className="Joke-text">{this.props.joke}</div>
-        <img alt="smiley" />
+        <div className="Joke-smiley">
+          <i className="em em-rolling_on_the_floor_laughing"></i>
+        </div>
       </div>
     );
   }
