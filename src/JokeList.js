@@ -50,6 +50,7 @@ class JokeList extends Component {
       );
     } catch (e) {
       alert(e);
+      this.setState({ isLoading: false });
     }
   }
   handleVote(id, delta) {
