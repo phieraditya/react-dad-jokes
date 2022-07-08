@@ -29,8 +29,11 @@ class JokeList extends Component {
       });
       jokes.push({ id: uuidv4(), joke: response.data.joke, votes: 0 });
     }
-    this.setState({ jokes: jokes });
-    window.localStorage.setItem('jokes', JSON.stringify(jokes));
+    this.setState(
+      (st) => ({ jokes: [...jokes, ...st.jokes] }),
+      () =>
+        window.localStorage.setItem('jokes', JSON.stringify(this.state.jokes))
+    );
   }
   handleVote(id, delta) {
     this.setState(
